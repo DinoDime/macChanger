@@ -2,8 +2,10 @@
 
 import subprocess
 
-interface = "wlan0"
-newMacAddy = "00:11:22:33:44:77"
+interface = input("Which interface's MAC address would you like changed?")
+newMacAddy = input("What would you like the new MAC address to be?")
+
+print("[+] Changing MAC address for " + interface + " to " + newMacAddy)
 
 subprocess.call("ifconfig " + interface + " down", shell=True)
 subprocess.call("ifconfig " + interface + " hw either " + newMacAddy, shell=True)
