@@ -15,6 +15,7 @@ def get_args():
         parser.error("[-] Please specify a mac address. Use --help for more information.")
     return options
 
+
 def mac_changer(interface, new_mac):
     print("[+] Changing MAC address for " + interface + " to " + new_mac)
     subprocess.call(["ifconfig", interface, "down"])
@@ -23,4 +24,7 @@ def mac_changer(interface, new_mac):
 
 
 options = get_args()
-mac_changer(options.interface, options.new_mac)
+# mac_changer(options.interface, options.new_mac)
+
+ifconfig_result = subprocess.check_output(["ifconfig", options.interface])
+print(ifconfig_result)
